@@ -42,9 +42,9 @@ if (userPasswordForm) {
         e.preventDefault();
         document.querySelector('.btn--save-password').textContent = 'Updating...';
         const oldPassword = document.getElementById('password-current').value;
-        const password = document.getElementById('password').value;
-        const passwordConfirm = document.getElementById('password-confirm').value;
-        await updateSettings({oldPassword, password, passwordConfirm}, 'password');
+        const newPassword = document.getElementById('password').value;
+        const newPasswordConfirm = document.getElementById('password-confirm').value;
+        await updateSettings({oldPassword, newPassword, newPasswordConfirm}, 'password');
 
         document.querySelector('.btn--save-password').textContent = 'Save password';
         document.getElementById('password-current').value = '';
