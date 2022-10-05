@@ -31,15 +31,20 @@ if (logOutBtn) {
 if (userDataForm) {
     userDataForm.addEventListener('submit', e => {
         e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        updateSettings({name, email}, 'data');
+
+        const form = new FormData();
+        form.append('name', document.getElementById('name').value);
+        form.append('email', document.getElementById('email').value);
+        form.append('photo', document.getElementById('photo').files[0]);
+
+        updateSettings(form, 'data');
     });
 }
 
 if (userPasswordForm) {
     userPasswordForm.addEventListener('submit', async e => {
         e.preventDefault();
+
         document.querySelector('.btn--save-password').textContent = 'Updating...';
         const oldPassword = document.getElementById('password-current').value;
         const newPassword = document.getElementById('password').value;
